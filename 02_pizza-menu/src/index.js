@@ -128,7 +128,9 @@ function Footer() {
   return (
     <footer className="footer">
       {isOpen ? (
-        <Order closehour={closeHour} />
+        {
+          /*  used Conditional Rendering */
+        }(<Order closehour={closeHour} />)
       ) : (
         <p className="order">
           We're happy to serve you between {closeHour}:00 and {openHour}:00
@@ -141,8 +143,6 @@ function Footer() {
 function Order(props) {
   return (
     <div className="order">
-      {" "}
-      {/*  used Conditional Rendering */}
       <p>
         We're open until {props.closehour}:00. Come visit us or order online
       </p>
