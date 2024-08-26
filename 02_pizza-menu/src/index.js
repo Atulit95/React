@@ -50,6 +50,7 @@ const pizzaData = [
 function App() {
   return (
     <div>
+      <p>ello</p>
       <Header className="container" />
       <Menu />
       <Footer />
@@ -82,11 +83,17 @@ function Menu() {
 
       {/* Method2: Conditional Rendering */}
       {numPizzas > 0 ? (
-        <ul className="pizzas">
-          {pizzas.map((pizza) => (
-            <Pizza pizzaObj={pizza} key={pizza.name} />
-          ))}
-        </ul>
+        <>
+          <p>
+            Authentic Italian cuisine. 6 creative dishes to choose from. All
+            from our stone oven, all organic, all delicious.
+          </p>
+          <ul className="pizzas">
+            {pizzas.map((pizza) => (
+              <Pizza pizzaObj={pizza} key={pizza.name} />
+            ))}
+          </ul>
+        </>
       ) : (
         <p>We're still working on our menu. Please come back later :)</p>
       )}
@@ -101,16 +108,41 @@ function Menu() {
   );
 }
 
-function Pizza(props) {
-  if (props.pizzaObj.soldOut) return null;
+//********* one way of using props *******************************
+// function Pizza(props) {
+//   if (props.pizzaObj.soldOut) return null;
+
+//   return (
+//     <li className="pizza">
+//       <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
+//       <div>
+//         <h3>{props.pizzaObj.name}</h3>
+//         <p>{props.pizzaObj.ingredients}</p>
+//         <span>{`$${props.pizzaObj.price}`}</span>
+//       </div>
+//     </li>
+//   );
+// }
+
+
+//********* using props with destructuring *******************************
+function Pizza({ pizzaObj }) {
+  // if (pizzaObj.soldOut) return null;
 
   return (
-    <li className="pizza">
-      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
+    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
+      <img src={pizzaObj.photoName} alt={pizzaObj.name} />
       <div>
-        <h3>{props.pizzaObj.name}</h3>
-        <p>{props.pizzaObj.ingredients}</p>
-        <span>{`$${props.pizzaObj.price}`}</span>
+        <h3>{pizzaObj.name}</h3>
+        <p>{pizzaObj.ingredients}</p>
+
+        {/* {pizzaObj.soldOut ? (
+          <span>SOLD OUT</span>
+        ) : (
+          <span>${pizzaObj.price}</span>
+        )} */}
+
+        <span>{pizzaObj.soldOut ? "SOLD OUT" : '$'+pizzaObj.price}</span>
       </div>
     </li>
   );
@@ -128,9 +160,7 @@ function Footer() {
   return (
     <footer className="footer">
       {isOpen ? (
-        {
-          /*  used Conditional Rendering */
-        }(<Order closehour={closeHour} />)
+        <Order closehour={closeHour} />
       ) : (
         <p className="order">
           We're happy to serve you between {closeHour}:00 and {openHour}:00
