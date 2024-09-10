@@ -152,6 +152,7 @@ body {
 /* *************** */
 
 .footer {
+  margin-top: 50px;
   font-size: 1.4rem;
   font-weight: 500;
   justify-content: center;
