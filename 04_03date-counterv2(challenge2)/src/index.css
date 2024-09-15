@@ -1,0 +1,25 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.step{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 30px;
+}
+
+.decrease{
+  width:25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.slider{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
