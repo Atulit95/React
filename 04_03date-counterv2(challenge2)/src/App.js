@@ -11,7 +11,7 @@ function App() {
 function Counter() {
   const [step, setStep] = useState(0);
   const [count, setCount] = useState(0);
-  console.log(step)
+  console.log(step);
 
   function calcDate(days) {
     const myDate = new Date(); // or use an existing date objec
@@ -21,11 +21,9 @@ function Counter() {
     return result.toDateString();
   }
 
-  function handleStepInc() {
-    setStep((s) => s + 1);
-  }
-  function handleStepDec() {
-    if (step > 0) setStep((s) => s - 1);
+  function handleReset() {
+    setStep(0);
+    setCount(0);
   }
 
   function handleCountInc() {
@@ -51,13 +49,26 @@ function Counter() {
         </button>
       </div> */}
       <div className="slider">
-        <input type="range" min={0} max={10} value={step} onChange={e => setStep(e.target.value)}/>Step: {step}
+        <input
+          type="range"
+          min={0}
+          max={10}
+          value={step}
+          onChange={(e) => setStep(Number(e.target.value))}
+        />
+        Step: {step}
       </div>
       <div className="step">
         <button className="decrease" onClick={handleCountDec}>
           -
         </button>
-        <input type="text" value={count} onChange={e => setCount(e.target.value)}></input>
+        <input
+          type="text"
+          value={count}
+          onChange={(e) => {
+            setCount(Number(e.target.value));
+          }}
+        ></input>
         <button className="decrease" onClick={handleCountInc}>
           +
         </button>
@@ -71,8 +82,9 @@ function Counter() {
       ) : (
         <p className="step">
           {Math.abs(count)} days ago was {calcDate(count)}
-        </p>
+            </p>
       )}
+      {step !==0 ? <button onClick={handleReset} className="reset">Reset</button> : ""}
     </>
   );
 }
