@@ -103,9 +103,9 @@ input {
   color: #5a3e2b;
   font-family: inherit;
   border: none;
-  margin: 20px;
+  margin: 10px;
   border-radius: 10rem;
-  padding: 1.2rem 3.2rem;
+  padding: 0.8rem 2.4rem;
   font-weight: 600;
   font-size: 1.4rem;
   cursor: pointer;
@@ -115,7 +115,7 @@ input {
 .add-form select{
   width: 8%;
   margin-left: 10px;
-  padding: 1.2rem;
+  padding: 0.8rem 2.4rem;
 }
 
 .add-form button {
