@@ -49,7 +49,7 @@ export default function App() {
           : friend
       )
     );
-    setSelectedFriend(false)
+    setSelectedFriend(false);
   }
 
   return (
